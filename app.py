@@ -1,8 +1,12 @@
-import sqlite3
+from flask import Flask
+from app.title.dao.title_dao import TitleDAO
 
-with sqlite3.connect("data/netflix.db") as netflix_connection:
-    netflix_cursor = netflix_connection.cursor()
-netflix_query = """
-                   SELECT title, country FROM netflix LIMIT 10
-                """
-netflix_data = netflix_cursor.execute(netflix_query).fetchall()
+app = Flask(__name__)
+app.config.from_pyfile("config.py")
+db_path = app.config.get("PATH")
+db_name = app.config.get("NAME")
+
+database = TitleDAO(db_path, db_name)
+
+if __name__ == "__main__":
+    app.run()
