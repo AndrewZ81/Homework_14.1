@@ -1,7 +1,7 @@
 import sqlite3  # Импортируем для работы с базами данных
 
 
-class MovieDAO:  # Создаём DAO для выборки по названиям
+class MovieDAO:  # Создаём DAO для выборки по названиям и годам выпуска
 
     def __init__(self, path, name):
         """
@@ -44,10 +44,10 @@ class MovieDAO:  # Создаём DAO для выборки по названи�
                     searching_results_as_tuple = i
                     last_year = i[2]
         searching_results_as_dict = {"title": searching_results_as_tuple[0],
-                             "country": searching_results_as_tuple[1],
-                             "release_year": searching_results_as_tuple[2],
-                             "genre": searching_results_as_tuple[3],
-                             "description": searching_results_as_tuple[4]}
+                                     "country": searching_results_as_tuple[1],
+                                     "release_year": searching_results_as_tuple[2],
+                                     "genre": searching_results_as_tuple[3],
+                                     "description": searching_results_as_tuple[4]}
         return searching_results_as_dict
 
     def search_by_years(self, from_year, to_year):
