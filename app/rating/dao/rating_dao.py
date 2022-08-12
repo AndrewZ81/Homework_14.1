@@ -17,12 +17,6 @@ class RatingDAO:  # Создаём DAO для выборки по рейтинг
         Загружает БД и создаёт указатель для неё
         :return: Указатель БД
         """
-        try:
-            file = open(self.path)
-        except FileNotFoundError:
-            quit(f"Файл {self.path} с базой данных не найден")
-        else:
-            file.close()
         with sqlite3.connect(self.path) as db_connection:
             db_cursor = db_connection.cursor()
         return db_cursor
